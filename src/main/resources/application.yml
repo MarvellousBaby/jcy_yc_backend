@@ -1,0 +1,9 @@
+server:
+  port: 8089
+
+spring:
+  datasource:
+    url: jdbc:sqlite:F:\\Project\\beier1\\ale-edm\\db\\aleedm.db
+    username:
+    password:
+    driver-class-name: org.sqlite.JDBC
