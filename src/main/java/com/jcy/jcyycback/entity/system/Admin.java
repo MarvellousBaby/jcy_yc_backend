@@ -25,5 +25,4 @@ public class Admin extends BaseEntity {
     private Boolean enable;
 
 
-
 }

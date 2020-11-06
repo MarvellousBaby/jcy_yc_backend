@@ -13,4 +13,9 @@ public class Organization extends BaseEntity {
 
     private String name;
 
+    /**
+     *  0-正常，1-删除
+     */
+    private Integer enable;
+
 }
