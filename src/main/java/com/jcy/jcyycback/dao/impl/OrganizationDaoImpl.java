@@ -48,7 +48,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
             params.add(organization.getName());
         }
         if (StringUtils.isNotBlank(paramPageHelper.getStartDate()) && StringUtils.isNotBlank(paramPageHelper.getEndDate())) {
-            sbSelect.append(" and updateTime between ? and ? ");
+            sbSelect.append(" and updatetime between ? and ? ");
             params.add(paramPageHelper.getStartDate());
             params.add(paramPageHelper.getEndDate());
         }
@@ -60,7 +60,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
         long total = jdbcTemplate.queryForObject(sbCount.toString(), Long.class, params.toArray());
 
         sbSelect.append(" limit ? offset ? ");
-        sbSelect.append(" order by updateTime desc");
+        sbSelect.append(" order by updatetime desc");
         params.add(paramPageHelper.getPageSize());
         params.add(paramPageHelper.getLimitMin());
 
@@ -85,7 +85,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
             params.add(paramT.getName());
         }
 
-        sb.append(" order by updateTime desc");
+        sb.append(" order by updatetime desc");
 
         return jdbcTemplate.queryForList(sb.toString(), Organization.class, params.toArray());
     }
@@ -115,7 +115,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
             result = jdbcTemplate.update(sb.toString(), params.toArray());
         } else {
             sb.append("update t_org set name=?," +
-                    "   updateTime=?," +
+                    "   updatetime=?," +
                     "   updateuser=?," +
                     "   remark=?    " +
                     "   where id=?  ");

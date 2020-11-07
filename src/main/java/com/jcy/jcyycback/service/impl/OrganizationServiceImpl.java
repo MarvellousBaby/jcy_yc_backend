@@ -33,7 +33,6 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     public PageHelper<Organization> queryList(PageHelper<Organization> paramPageHelper) throws Exception {
-
         return organizationDao.queryList(paramPageHelper);
     }
 
@@ -54,15 +53,24 @@ public class OrganizationServiceImpl implements OrganizationService {
             paramT.setEnable(0);
             paramT.setCreateUser(CacheUtils.getAdminLoginName());
             paramT.setCreateTime(new Date());
-        }
-        paramT.setUpdateUser(CacheUtils.getAdminLoginName());
-        paramT.setUpdateTime(new Date());
+            return organizationDao.save(paramT);
+        }else {
+            Organization organization = organizationDao.get(paramT);
 
-        return organizationDao.save(paramT);
+            organization.setName(paramT.getName());
+            organization.setRemark(paramT.getRemark());
+            organization.setUpdateUser(CacheUtils.getAdminLoginName());
+            organization.setUpdateTime(new Date());
+            return organizationDao.save(organization);
+        }
+
     }
 
     @Override
     public Boolean delete(Organization paramT) throws Exception {
+        if (paramT.getId() == null){
+            return false;
+        }
         return organizationDao.delete(paramT);
     }
 }

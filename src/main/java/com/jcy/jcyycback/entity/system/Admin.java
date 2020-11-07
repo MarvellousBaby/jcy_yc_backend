@@ -22,7 +22,18 @@ public class Admin extends BaseEntity {
 
     private String phone;
 
-    private Boolean enable;
+    /**
+     *  0-正常，1-删除
+     */
+    private Integer enable;
+
+    /**
+     * 业务所需字段
+     */
+    /**
+     * 旧密码
+     */
+    private String oldPassword;
 
 
 }
