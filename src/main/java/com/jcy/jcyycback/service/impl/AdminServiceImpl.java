@@ -79,6 +79,8 @@ public class AdminServiceImpl implements AdminService {
             paramT.setEnable(0);
             paramT.setCreateUser(CacheUtils.getAdminLoginName());
             paramT.setCreateTime(new Date());
+            paramT.setUpdateUser(CacheUtils.getAdminLoginName());
+            paramT.setUpdateTime(new Date());
             return adminDao.save(paramT);
         } else {
             Admin admin = adminDao.get(paramT);

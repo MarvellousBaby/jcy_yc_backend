@@ -1,7 +1,10 @@
 package com.jcy.jcyycback.service;
 
 import com.jcy.jcyycback.common.service.IBaseService;
+import com.jcy.jcyycback.common.service.PageHelper;
+import com.jcy.jcyycback.entity.system.AttributionStatistic;
 import com.jcy.jcyycback.entity.system.CigaretteFlow;
+import com.jcy.jcyycback.entity.system.CigaretteStatistic;
 
 /**
  * @author ：Panyu
@@ -12,5 +15,10 @@ import com.jcy.jcyycback.entity.system.CigaretteFlow;
  */
 public interface CigaretteFlowService extends IBaseService<CigaretteFlow> {
 
+    //获取条件内的条数，价格
+    CigaretteStatistic getTotal(PageHelper pageHelper);
+
+    //查询香烟归属地及条数
+    PageHelper<AttributionStatistic> getTotalByAttr(PageHelper pageHelper);
 
 }

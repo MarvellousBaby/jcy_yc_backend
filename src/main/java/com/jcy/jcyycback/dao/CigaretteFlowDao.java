@@ -20,6 +20,7 @@ public interface CigaretteFlowDao extends IBaseService<CigaretteFlow> {
     //获取条件内的条数，价格
     CigaretteStatistic getTotal(PageHelper pageHelper);
 
+    //查询香烟归属地及条数
     PageHelper<AttributionStatistic> getTotalByAttr(PageHelper pageHelper);
 
 

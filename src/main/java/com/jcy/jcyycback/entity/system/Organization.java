@@ -14,6 +14,11 @@ public class Organization extends BaseEntity {
     private String name;
 
     /**
+     * 组织登记 0-局，1-所
+     */
+    private Integer type;
+
+    /**
      *  0-正常，1-删除
      */
     private Integer enable;
