@@ -47,6 +47,11 @@ public class OrganizationDaoImpl implements OrganizationDao {
             sbSelect.append(" and name like '%?%' ");
             params.add(organization.getName());
         }
+
+        if (organization.getType()!=null) {
+            sbSelect.append(" and type = ? ");
+            params.add(organization.getType());
+        }
         if (StringUtils.isNotBlank(paramPageHelper.getStartDate()) && StringUtils.isNotBlank(paramPageHelper.getEndDate())) {
             sbSelect.append(" and updatetime between ? and ? ");
             params.add(paramPageHelper.getStartDate());

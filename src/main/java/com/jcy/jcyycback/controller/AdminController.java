@@ -3,7 +3,6 @@ package com.jcy.jcyycback.controller;
 import com.jcy.jcyycback.common.service.PageHelper;
 import com.jcy.jcyycback.common.service.RespCodeEnum;
 import com.jcy.jcyycback.common.service.RespData;
-import com.jcy.jcyycback.common.utils.CacheUtils;
 import com.jcy.jcyycback.entity.system.Admin;
 import com.jcy.jcyycback.service.AdminService;
 import io.swagger.annotations.Api;
@@ -40,6 +39,7 @@ public class AdminController {
             resp = adminService.login(admin);
             if (resp.getCode().intValue() == 200) {
                 request.getSession().setAttribute("admin", resp.getData());
+                request.getSession().setAttribute("admin_time", System.currentTimeMillis());
             }
 
 
@@ -50,6 +50,12 @@ public class AdminController {
         return resp;
     }
 
+    @GetMapping(value = {"/unAdmin"})
+    public RespData unAdmin(HttpServletRequest request) {
+        RespData resp = new RespData();
+        resp.setRespCode(RespCodeEnum.UNADMIN);
+        return resp;
+    }
 
     @ApiOperation(value = "新增")
     @PostMapping(name = "/insert")
